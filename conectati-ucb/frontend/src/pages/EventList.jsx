@@ -5,10 +5,16 @@ export default function EventList() {
   const [events, setEvents] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:5000/api/events')
-      .then(res => setEvents(res.data))
-      .catch(err => console.error(err));
-  }, []);
+  console.log("Buscando eventos...");
+  axios.get('http://localhost:5000/api/events')
+    .then(res => {
+      console.log(res.data);
+      setEvents(res.data);
+    })
+    .catch(err => {
+      console.error("Erro ao buscar eventos:", err);
+    });
+}, []);
 
   function inscrever(eventId) {
     axios.post(`http://localhost:5000/api/events/${eventId}/register`, {
@@ -19,15 +25,16 @@ export default function EventList() {
   }
 
   return (
-    <div>
-      <h2>Eventos Disponíveis</h2>
-      {events.map(ev => (
-        <div key={ev._id}>
-          <h3>{ev.title}</h3>
-          <p>{new Date(ev.date).toLocaleString()}</p>
-          <button onClick={() => inscrever(ev._id)}>Inscrever-se</button>
-        </div>
-      ))}
-    </div>
-  );
+  <div>
+    <h2>Eventos Disponíveis</h2>
+    {events.map(ev => (
+      <div key={ev._id} className="event-card">
+        <h3>{ev.title}</h3>
+        <p>{new Date(ev.date).toLocaleString()}</p>
+        <button onClick={() => inscrever(ev._id)}>Inscrever-se</button>
+      </div>
+    ))}
+  </div>
+);
+
 }

@@ -2,9 +2,11 @@ import express from 'express';
 import mongoose from 'mongoose';
 import eventRoutes from './routes/eventRoutes.js';
 import authRoutes from './routes/authRoutes.js';
+import cors from 'cors';
 
 const app = express();
 app.use(express.json());
+app.use(cors());
 
 mongoose.connect('mongodb://localhost:27017/ucb-events')
   .then(() => console.log('MongoDB connected'));
