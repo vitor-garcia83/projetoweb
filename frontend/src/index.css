@@ -1,17 +1,65 @@
 /* Cabeçalho */
+/* Ajuste no header para layout flexível */
 .header {
-  background-color: #3498db;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #044976;
   color: white;
   padding: 1rem 2rem;
+}
+
+/* Div esquerda só pra ocupar espaço e ajudar no alinhamento */
+.header-left {
+  flex: 1;
+}
+
+/* Centro: título e link empilhados */
+.header-center {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
 }
 
-.header h1 {
-  font-size: 3rem; /* aumenta o tamanho da fonte */
-  color: #efefed; /* amarelo vibrante */
-  text-shadow: 1px 1px 2px rgba(0,0,0,0.5); /* sombra para dar destaque */
+.header-center h1 {
+  font-size: 3rem;
+  color: #efefed;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
   margin: 0;
 }
+
+.header-center nav a {
+  margin-top: 0.5rem;
+  color: white;
+  text-decoration: underline;
+}
+
+.header-center nav a:hover {
+  color: #ccc;
+}
+
+/* Direita: botão login */
+.header-right {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.header-right button {
+  padding: 0.5rem 1rem;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.header-right button:hover {
+  background-color: #45a049;
+}
+
 
 
 /* Rodapé */
@@ -64,6 +112,30 @@ main {
   }
 }
 
+.form-register input {
+  display: block;
+  width: 100%;
+  max-width: 400px; /* Para não ficar esticado demais */
+  margin-bottom: 10px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.form-register button {
+  padding: 10px 20px;
+  background-color: #044976;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.form-register button:hover {
+  background-color: #044976;
+}
+
+
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background-color: #f9f9f9;
@@ -94,7 +166,7 @@ h1 {
 }
 
 button {
-  background-color: #3498db;
+  background-color: #044976;
   color: white;
   border: none;
   padding: 0.5rem 1rem;
@@ -104,5 +176,111 @@ button {
 }
 
 button:hover {
-  background-color: #2980b9;
+  background-color: #044976;
 }
+
+.admin-container {
+  padding: 2rem;
+}
+
+.admin-container h2 {
+  text-align: center;
+  color: #044976;
+  margin-bottom: 1rem;
+}
+
+.admin-form {
+  background-color: #fff;
+  padding: 1rem 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  margin-bottom: 2rem;
+}
+
+.admin-form input {
+  display: block;
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.admin-form button {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.admin-form button:hover {
+  background-color: #45a049;
+}
+
+.event-list-admin {
+  background-color: #fff;
+  padding: 1rem 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.event-list-admin ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.event-list-admin li {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #eee;
+}
+
+.event-list-admin button {
+  margin-left: 0.5rem;
+  padding: 5px 10px;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-edit {
+  background-color: #FFC107;
+  color: black;
+}
+
+.btn-edit:hover {
+  background-color: #e0a800;
+}
+
+.btn-delete {
+  background-color: #f44336;
+  color: white;
+}
+
+.btn-delete:hover {
+  background-color: #c0392b;
+}
+
+.btn-view {
+  background-color: #2196F3;
+  color: white;
+}
+
+.btn-view:hover {
+  background-color: #1976D2;
+}
+
+.event-list-admin li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #eee;
+}
+
+.event-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+

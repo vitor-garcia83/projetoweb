@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 export default function EventList() {
   const [events, setEvents] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     axios.get('http://localhost:5000/api/events')
@@ -15,7 +17,13 @@ export default function EventList() {
       email: 'usuario@ucb.br'
     }).then(() => {
       alert('Inscrição confirmada');
+    }).catch(() => {
+      alert('Erro ao se inscrever');
     });
+  }
+
+  function irParaFormulario(eventId) {
+    navigate(`/registrar/${eventId}`);
   }
 
   return (
@@ -37,7 +45,9 @@ export default function EventList() {
           <p><strong>Parceiro:</strong> {ev.partner}</p>
           <p><strong>Capacidade:</strong> {ev.capacity}</p>
           <p><strong>Inscritos:</strong> {ev.registeredUsers?.length || 0}</p>
-          <button onClick={() => inscrever(ev._id)}>Inscrever-se</button>
+
+          <button onClick={() => irParaFormulario(ev._id)}>Inscrever-se</button>
+
         </div>
       ))}
     </div>
